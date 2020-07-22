@@ -1,0 +1,205 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /home/muhammetas/Desktop/dual_camera_vestel/usbCamera/src/main/AndroidManifest.xml:2:1-37:12
+INJECTED from /home/muhammetas/Desktop/dual_camera_vestel/usbCamera/src/main/AndroidManifest.xml:2:1-37:12
+INJECTED from /home/muhammetas/Desktop/dual_camera_vestel/usbCamera/src/main/AndroidManifest.xml:2:1-37:12
+INJECTED from /home/muhammetas/Desktop/dual_camera_vestel/usbCamera/src/main/AndroidManifest.xml:2:1-37:12
+MERGED from [:usbCameraCommon] /home/muhammetas/Desktop/dual_camera_vestel/usbCameraCommon/build/intermediates/manifests/full/debug/AndroidManifest.xml:2:1-9:12
+MERGED from [:configCamera] /home/muhammetas/Desktop/dual_camera_vestel/configCamera/build/intermediates/manifests/full/debug/AndroidManifest.xml:17:1-36:12
+MERGED from [:libuvccamera] /home/muhammetas/Desktop/dual_camera_vestel/libuvccamera/build/intermediates/manifests/full/debug/AndroidManifest.xml:24:1-33:12
+MERGED from [com.android.support:support-v4:27.1.1] /home/muhammetas/.gradle/caches/transforms-1/files-1.1/support-v4-27.1.1.aar/67f05420554fda9289afcb1a2d3b842c/AndroidManifest.xml:17:1-22:12
+MERGED from [com.amazonaws:aws-android-sdk-mobile-client:2.12.7] /home/muhammetas/.gradle/caches/transforms-1/files-1.1/aws-android-sdk-mobile-client-2.12.7.aar/de0391611506a9edef4bedb0efde1d8a/AndroidManifest.xml:2:1-9:12
+MERGED from [com.android.support:support-media-compat:27.1.1] /home/muhammetas/.gradle/caches/transforms-1/files-1.1/support-media-compat-27.1.1.aar/96c303475c530d86be3f173d07053fcf/AndroidManifest.xml:17:1-22:12
+MERGED from [com.serenegiant:common:2.12.4] /home/muhammetas/.gradle/caches/transforms-1/files-1.1/common-2.12.4.aar/d8d667c618e99d0c6e9ce55ce78a3118/AndroidManifest.xml:2:1-11:12
+MERGED from [com.android.support:preference-v7:27.1.1] /home/muhammetas/.gradle/caches/transforms-1/files-1.1/preference-v7-27.1.1.aar/c310b36523054370593b351e85edb9ac/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:appcompat-v7:27.1.1] /home/muhammetas/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/8d3995d44a550b72affddc815da7cd52/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-fragment:27.1.1] /home/muhammetas/.gradle/caches/transforms-1/files-1.1/support-fragment-27.1.1.aar/531ad9b17af889f1d09495cf4f9d0aeb/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:recyclerview-v7:27.1.1] /home/muhammetas/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-27.1.1.aar/0f4e7f8f573b1cc8f447c6ba1434bab5/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:animated-vector-drawable:27.1.1] /home/muhammetas/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-27.1.1.aar/791a56df76ada1e4ea9f5bf83a96cfd9/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-ui:27.1.1] /home/muhammetas/.gradle/caches/transforms-1/files-1.1/support-core-ui-27.1.1.aar/643f92d2e1cbe24346da4c206d4a9078/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-utils:27.1.1] /home/muhammetas/.gradle/caches/transforms-1/files-1.1/support-core-utils-27.1.1.aar/5613962ac1ad1da7371715728e9068ca/AndroidManifest.xml:17:1-22:12
+MERGED from [com.jakewharton:butterknife:8.8.1] /home/muhammetas/.gradle/caches/transforms-1/files-1.1/butterknife-8.8.1.aar/9dff39f166a4ff47cd14f086057490b2/AndroidManifest.xml:2:1-7:12
+MERGED from [com.android.support:support-vector-drawable:27.1.1] /home/muhammetas/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-27.1.1.aar/afef955ce2056a88b940f90258bda3e7/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-compat:27.1.1] /home/muhammetas/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/087a629f6776d29df0e73499a2a369c1/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support.test.espresso:espresso-core:3.0.2] /home/muhammetas/.gradle/caches/transforms-1/files-1.1/espresso-core-3.0.2.aar/bf3b6fb7e2538f679926d10532c15813/AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support.test:rules:1.0.2] /home/muhammetas/.gradle/caches/transforms-1/files-1.1/rules-1.0.2.aar/46a4b506ad292047aa3983af6fb8912e/AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support.test:runner:1.0.2] /home/muhammetas/.gradle/caches/transforms-1/files-1.1/runner-1.0.2.aar/68c6e35c95c8ffbf889958b1e9907e78/AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support.test:monitor:1.0.2] /home/muhammetas/.gradle/caches/transforms-1/files-1.1/monitor-1.0.2.aar/08d78025bb5ba63faab494bbc4421c0b/AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support.test.uiautomator:uiautomator-v18:2.0.0] /home/muhammetas/.gradle/caches/transforms-1/files-1.1/uiautomator-v18-2.0.0.aar/28fb362e8628cc79d25591566683dfcd/AndroidManifest.xml:17:1-24:12
+MERGED from [com.amazonaws:aws-android-sdk-auth-core:2.12.7] /home/muhammetas/.gradle/caches/transforms-1/files-1.1/aws-android-sdk-auth-core-2.12.7.aar/b5d945edbe18076fa67efa6d10d1ba13/AndroidManifest.xml:2:1-4:80
+MERGED from [com.android.support.test.espresso:espresso-idling-resource:3.0.2] /home/muhammetas/.gradle/caches/transforms-1/files-1.1/espresso-idling-resource-3.0.2.aar/69e5cc68da42dab042737852a21cbf5e/AndroidManifest.xml:17:1-24:12
+MERGED from [android.arch.lifecycle:runtime:1.1.0] /home/muhammetas/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/e81de80d7fa7fa777c5ce872bc023996/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:livedata-core:1.1.0] /home/muhammetas/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.0.aar/d3f4b927039cc98d862e87e608c553da/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:viewmodel:1.1.0] /home/muhammetas/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.0.aar/47d4b923cff052d6cd356666c1f933a9/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.core:runtime:1.1.0] /home/muhammetas/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/c4733d4261d6eb59ebc030f12623ded4/AndroidManifest.xml:17:1-22:12
+INJECTED from /home/muhammetas/Desktop/dual_camera_vestel/usbCamera/src/main/AndroidManifest.xml:2:1-37:12
+INJECTED from /home/muhammetas/Desktop/dual_camera_vestel/usbCamera/src/main/AndroidManifest.xml:2:1-37:12
+INJECTED from /home/muhammetas/Desktop/dual_camera_vestel/usbCamera/src/main/AndroidManifest.xml:2:1-37:12
+	package
+		ADDED from /home/muhammetas/Desktop/dual_camera_vestel/usbCamera/src/main/AndroidManifest.xml:3:5-45
+		INJECTED from /home/muhammetas/Desktop/dual_camera_vestel/usbCamera/src/main/AndroidManifest.xml
+		INJECTED from /home/muhammetas/Desktop/dual_camera_vestel/usbCamera/src/main/AndroidManifest.xml
+	android:versionName
+		INJECTED from /home/muhammetas/Desktop/dual_camera_vestel/usbCamera/src/main/AndroidManifest.xml
+		ADDED from /home/muhammetas/Desktop/dual_camera_vestel/usbCamera/src/main/AndroidManifest.xml:2:1-37:12
+		INJECTED from /home/muhammetas/Desktop/dual_camera_vestel/usbCamera/src/main/AndroidManifest.xml
+	android:versionCode
+		INJECTED from /home/muhammetas/Desktop/dual_camera_vestel/usbCamera/src/main/AndroidManifest.xml
+		ADDED from /home/muhammetas/Desktop/dual_camera_vestel/usbCamera/src/main/AndroidManifest.xml:2:1-37:12
+		INJECTED from /home/muhammetas/Desktop/dual_camera_vestel/usbCamera/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /home/muhammetas/Desktop/dual_camera_vestel/usbCamera/src/main/AndroidManifest.xml:2:11-69
+uses-permission#android.permission.RECORD_AUDIO
+ADDED from /home/muhammetas/Desktop/dual_camera_vestel/usbCamera/src/main/AndroidManifest.xml:5:5-71
+	android:name
+		ADDED from /home/muhammetas/Desktop/dual_camera_vestel/usbCamera/src/main/AndroidManifest.xml:5:22-68
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from /home/muhammetas/Desktop/dual_camera_vestel/usbCamera/src/main/AndroidManifest.xml:6:5-81
+	android:name
+		ADDED from /home/muhammetas/Desktop/dual_camera_vestel/usbCamera/src/main/AndroidManifest.xml:6:22-78
+uses-permission#android.permission.CAMERA
+ADDED from /home/muhammetas/Desktop/dual_camera_vestel/usbCamera/src/main/AndroidManifest.xml:7:5-65
+	android:name
+		ADDED from /home/muhammetas/Desktop/dual_camera_vestel/usbCamera/src/main/AndroidManifest.xml:7:22-62
+uses-permission#android.permission.INTERNET
+ADDED from /home/muhammetas/Desktop/dual_camera_vestel/usbCamera/src/main/AndroidManifest.xml:10:5-67
+MERGED from [com.amazonaws:aws-android-sdk-mobile-client:2.12.7] /home/muhammetas/.gradle/caches/transforms-1/files-1.1/aws-android-sdk-mobile-client-2.12.7.aar/de0391611506a9edef4bedb0efde1d8a/AndroidManifest.xml:6:5-66
+MERGED from [com.amazonaws:aws-android-sdk-mobile-client:2.12.7] /home/muhammetas/.gradle/caches/transforms-1/files-1.1/aws-android-sdk-mobile-client-2.12.7.aar/de0391611506a9edef4bedb0efde1d8a/AndroidManifest.xml:6:5-66
+	android:name
+		ADDED from /home/muhammetas/Desktop/dual_camera_vestel/usbCamera/src/main/AndroidManifest.xml:10:22-64
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from /home/muhammetas/Desktop/dual_camera_vestel/usbCamera/src/main/AndroidManifest.xml:11:5-79
+MERGED from [com.amazonaws:aws-android-sdk-mobile-client:2.12.7] /home/muhammetas/.gradle/caches/transforms-1/files-1.1/aws-android-sdk-mobile-client-2.12.7.aar/de0391611506a9edef4bedb0efde1d8a/AndroidManifest.xml:7:5-78
+MERGED from [com.amazonaws:aws-android-sdk-mobile-client:2.12.7] /home/muhammetas/.gradle/caches/transforms-1/files-1.1/aws-android-sdk-mobile-client-2.12.7.aar/de0391611506a9edef4bedb0efde1d8a/AndroidManifest.xml:7:5-78
+	android:name
+		ADDED from /home/muhammetas/Desktop/dual_camera_vestel/usbCamera/src/main/AndroidManifest.xml:11:22-76
+uses-permission#android.permission.READ_EXTERNAL_STORAGE
+ADDED from /home/muhammetas/Desktop/dual_camera_vestel/usbCamera/src/main/AndroidManifest.xml:14:5-80
+	android:name
+		ADDED from /home/muhammetas/Desktop/dual_camera_vestel/usbCamera/src/main/AndroidManifest.xml:14:22-77
+uses-feature#0x00020000
+ADDED from /home/muhammetas/Desktop/dual_camera_vestel/usbCamera/src/main/AndroidManifest.xml:15:5-17:35
+	android:glEsVersion
+		ADDED from /home/muhammetas/Desktop/dual_camera_vestel/usbCamera/src/main/AndroidManifest.xml:16:9-41
+	android:required
+		ADDED from /home/muhammetas/Desktop/dual_camera_vestel/usbCamera/src/main/AndroidManifest.xml:17:9-32
+application
+ADDED from /home/muhammetas/Desktop/dual_camera_vestel/usbCamera/src/main/AndroidManifest.xml:19:5-35:19
+MERGED from [:configCamera] /home/muhammetas/Desktop/dual_camera_vestel/configCamera/build/intermediates/manifests/full/debug/AndroidManifest.xml:31:5-34:38
+MERGED from [:configCamera] /home/muhammetas/Desktop/dual_camera_vestel/configCamera/build/intermediates/manifests/full/debug/AndroidManifest.xml:31:5-34:38
+MERGED from [com.android.support.test.uiautomator:uiautomator-v18:2.0.0] /home/muhammetas/.gradle/caches/transforms-1/files-1.1/uiautomator-v18-2.0.0.aar/28fb362e8628cc79d25591566683dfcd/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support.test.uiautomator:uiautomator-v18:2.0.0] /home/muhammetas/.gradle/caches/transforms-1/files-1.1/uiautomator-v18-2.0.0.aar/28fb362e8628cc79d25591566683dfcd/AndroidManifest.xml:22:5-20
+	android:supportsRtl
+		ADDED from [:configCamera] /home/muhammetas/Desktop/dual_camera_vestel/configCamera/build/intermediates/manifests/full/debug/AndroidManifest.xml:34:9-35
+	android:label
+		ADDED from /home/muhammetas/Desktop/dual_camera_vestel/usbCamera/src/main/AndroidManifest.xml:22:9-41
+	android:hardwareAccelerated
+		ADDED from [:configCamera] /home/muhammetas/Desktop/dual_camera_vestel/configCamera/build/intermediates/manifests/full/debug/AndroidManifest.xml:33:9-43
+	android:icon
+		ADDED from /home/muhammetas/Desktop/dual_camera_vestel/usbCamera/src/main/AndroidManifest.xml:21:9-45
+	android:allowBackup
+		ADDED from /home/muhammetas/Desktop/dual_camera_vestel/usbCamera/src/main/AndroidManifest.xml:20:9-35
+	android:theme
+		ADDED from /home/muhammetas/Desktop/dual_camera_vestel/usbCamera/src/main/AndroidManifest.xml:23:9-40
+activity#com.serenegiant.usbCamera.Cameras
+ADDED from /home/muhammetas/Desktop/dual_camera_vestel/usbCamera/src/main/AndroidManifest.xml:24:9-79
+	android:name
+		ADDED from /home/muhammetas/Desktop/dual_camera_vestel/usbCamera/src/main/AndroidManifest.xml:24:19-67
+activity#com.serenegiant.usbCamera.MainActivity
+ADDED from /home/muhammetas/Desktop/dual_camera_vestel/usbCamera/src/main/AndroidManifest.xml:25:9-33:20
+	android:label
+		ADDED from /home/muhammetas/Desktop/dual_camera_vestel/usbCamera/src/main/AndroidManifest.xml:27:13-45
+	android:name
+		ADDED from /home/muhammetas/Desktop/dual_camera_vestel/usbCamera/src/main/AndroidManifest.xml:26:13-66
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from /home/muhammetas/Desktop/dual_camera_vestel/usbCamera/src/main/AndroidManifest.xml:28:13-32:29
+action#android.intent.action.MAIN
+ADDED from /home/muhammetas/Desktop/dual_camera_vestel/usbCamera/src/main/AndroidManifest.xml:29:17-69
+	android:name
+		ADDED from /home/muhammetas/Desktop/dual_camera_vestel/usbCamera/src/main/AndroidManifest.xml:29:25-66
+category#android.intent.category.LAUNCHER
+ADDED from /home/muhammetas/Desktop/dual_camera_vestel/usbCamera/src/main/AndroidManifest.xml:31:17-77
+	android:name
+		ADDED from /home/muhammetas/Desktop/dual_camera_vestel/usbCamera/src/main/AndroidManifest.xml:31:27-74
+uses-sdk
+INJECTED from /home/muhammetas/Desktop/dual_camera_vestel/usbCamera/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /home/muhammetas/Desktop/dual_camera_vestel/usbCamera/src/main/AndroidManifest.xml
+INJECTED from /home/muhammetas/Desktop/dual_camera_vestel/usbCamera/src/main/AndroidManifest.xml
+MERGED from [:usbCameraCommon] /home/muhammetas/Desktop/dual_camera_vestel/usbCameraCommon/build/intermediates/manifests/full/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:usbCameraCommon] /home/muhammetas/Desktop/dual_camera_vestel/usbCameraCommon/build/intermediates/manifests/full/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:configCamera] /home/muhammetas/Desktop/dual_camera_vestel/configCamera/build/intermediates/manifests/full/debug/AndroidManifest.xml:20:5-22:41
+MERGED from [:configCamera] /home/muhammetas/Desktop/dual_camera_vestel/configCamera/build/intermediates/manifests/full/debug/AndroidManifest.xml:20:5-22:41
+MERGED from [:libuvccamera] /home/muhammetas/Desktop/dual_camera_vestel/libuvccamera/build/intermediates/manifests/full/debug/AndroidManifest.xml:29:5-31:41
+MERGED from [:libuvccamera] /home/muhammetas/Desktop/dual_camera_vestel/libuvccamera/build/intermediates/manifests/full/debug/AndroidManifest.xml:29:5-31:41
+MERGED from [com.android.support:support-v4:27.1.1] /home/muhammetas/.gradle/caches/transforms-1/files-1.1/support-v4-27.1.1.aar/67f05420554fda9289afcb1a2d3b842c/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-v4:27.1.1] /home/muhammetas/.gradle/caches/transforms-1/files-1.1/support-v4-27.1.1.aar/67f05420554fda9289afcb1a2d3b842c/AndroidManifest.xml:20:5-44
+MERGED from [com.amazonaws:aws-android-sdk-mobile-client:2.12.7] /home/muhammetas/.gradle/caches/transforms-1/files-1.1/aws-android-sdk-mobile-client-2.12.7.aar/de0391611506a9edef4bedb0efde1d8a/AndroidManifest.xml:4:5-73
+MERGED from [com.amazonaws:aws-android-sdk-mobile-client:2.12.7] /home/muhammetas/.gradle/caches/transforms-1/files-1.1/aws-android-sdk-mobile-client-2.12.7.aar/de0391611506a9edef4bedb0efde1d8a/AndroidManifest.xml:4:5-73
+MERGED from [com.android.support:support-media-compat:27.1.1] /home/muhammetas/.gradle/caches/transforms-1/files-1.1/support-media-compat-27.1.1.aar/96c303475c530d86be3f173d07053fcf/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-media-compat:27.1.1] /home/muhammetas/.gradle/caches/transforms-1/files-1.1/support-media-compat-27.1.1.aar/96c303475c530d86be3f173d07053fcf/AndroidManifest.xml:20:5-44
+MERGED from [com.serenegiant:common:2.12.4] /home/muhammetas/.gradle/caches/transforms-1/files-1.1/common-2.12.4.aar/d8d667c618e99d0c6e9ce55ce78a3118/AndroidManifest.xml:7:5-9:41
+MERGED from [com.serenegiant:common:2.12.4] /home/muhammetas/.gradle/caches/transforms-1/files-1.1/common-2.12.4.aar/d8d667c618e99d0c6e9ce55ce78a3118/AndroidManifest.xml:7:5-9:41
+MERGED from [com.android.support:preference-v7:27.1.1] /home/muhammetas/.gradle/caches/transforms-1/files-1.1/preference-v7-27.1.1.aar/c310b36523054370593b351e85edb9ac/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:preference-v7:27.1.1] /home/muhammetas/.gradle/caches/transforms-1/files-1.1/preference-v7-27.1.1.aar/c310b36523054370593b351e85edb9ac/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:appcompat-v7:27.1.1] /home/muhammetas/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/8d3995d44a550b72affddc815da7cd52/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:appcompat-v7:27.1.1] /home/muhammetas/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/8d3995d44a550b72affddc815da7cd52/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:27.1.1] /home/muhammetas/.gradle/caches/transforms-1/files-1.1/support-fragment-27.1.1.aar/531ad9b17af889f1d09495cf4f9d0aeb/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:27.1.1] /home/muhammetas/.gradle/caches/transforms-1/files-1.1/support-fragment-27.1.1.aar/531ad9b17af889f1d09495cf4f9d0aeb/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:recyclerview-v7:27.1.1] /home/muhammetas/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-27.1.1.aar/0f4e7f8f573b1cc8f447c6ba1434bab5/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:recyclerview-v7:27.1.1] /home/muhammetas/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-27.1.1.aar/0f4e7f8f573b1cc8f447c6ba1434bab5/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:27.1.1] /home/muhammetas/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-27.1.1.aar/791a56df76ada1e4ea9f5bf83a96cfd9/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:27.1.1] /home/muhammetas/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-27.1.1.aar/791a56df76ada1e4ea9f5bf83a96cfd9/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:27.1.1] /home/muhammetas/.gradle/caches/transforms-1/files-1.1/support-core-ui-27.1.1.aar/643f92d2e1cbe24346da4c206d4a9078/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:27.1.1] /home/muhammetas/.gradle/caches/transforms-1/files-1.1/support-core-ui-27.1.1.aar/643f92d2e1cbe24346da4c206d4a9078/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:27.1.1] /home/muhammetas/.gradle/caches/transforms-1/files-1.1/support-core-utils-27.1.1.aar/5613962ac1ad1da7371715728e9068ca/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:27.1.1] /home/muhammetas/.gradle/caches/transforms-1/files-1.1/support-core-utils-27.1.1.aar/5613962ac1ad1da7371715728e9068ca/AndroidManifest.xml:20:5-44
+MERGED from [com.jakewharton:butterknife:8.8.1] /home/muhammetas/.gradle/caches/transforms-1/files-1.1/butterknife-8.8.1.aar/9dff39f166a4ff47cd14f086057490b2/AndroidManifest.xml:5:5-43
+MERGED from [com.jakewharton:butterknife:8.8.1] /home/muhammetas/.gradle/caches/transforms-1/files-1.1/butterknife-8.8.1.aar/9dff39f166a4ff47cd14f086057490b2/AndroidManifest.xml:5:5-43
+MERGED from [com.android.support:support-vector-drawable:27.1.1] /home/muhammetas/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-27.1.1.aar/afef955ce2056a88b940f90258bda3e7/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:27.1.1] /home/muhammetas/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-27.1.1.aar/afef955ce2056a88b940f90258bda3e7/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:27.1.1] /home/muhammetas/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/087a629f6776d29df0e73499a2a369c1/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:27.1.1] /home/muhammetas/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/087a629f6776d29df0e73499a2a369c1/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support.test.espresso:espresso-core:3.0.2] /home/muhammetas/.gradle/caches/transforms-1/files-1.1/espresso-core-3.0.2.aar/bf3b6fb7e2538f679926d10532c15813/AndroidManifest.xml:20:5-22:41
+MERGED from [com.android.support.test.espresso:espresso-core:3.0.2] /home/muhammetas/.gradle/caches/transforms-1/files-1.1/espresso-core-3.0.2.aar/bf3b6fb7e2538f679926d10532c15813/AndroidManifest.xml:20:5-22:41
+MERGED from [com.android.support.test:rules:1.0.2] /home/muhammetas/.gradle/caches/transforms-1/files-1.1/rules-1.0.2.aar/46a4b506ad292047aa3983af6fb8912e/AndroidManifest.xml:20:5-22:41
+MERGED from [com.android.support.test:rules:1.0.2] /home/muhammetas/.gradle/caches/transforms-1/files-1.1/rules-1.0.2.aar/46a4b506ad292047aa3983af6fb8912e/AndroidManifest.xml:20:5-22:41
+MERGED from [com.android.support.test:runner:1.0.2] /home/muhammetas/.gradle/caches/transforms-1/files-1.1/runner-1.0.2.aar/68c6e35c95c8ffbf889958b1e9907e78/AndroidManifest.xml:20:5-22:41
+MERGED from [com.android.support.test:runner:1.0.2] /home/muhammetas/.gradle/caches/transforms-1/files-1.1/runner-1.0.2.aar/68c6e35c95c8ffbf889958b1e9907e78/AndroidManifest.xml:20:5-22:41
+MERGED from [com.android.support.test:monitor:1.0.2] /home/muhammetas/.gradle/caches/transforms-1/files-1.1/monitor-1.0.2.aar/08d78025bb5ba63faab494bbc4421c0b/AndroidManifest.xml:20:5-22:41
+MERGED from [com.android.support.test:monitor:1.0.2] /home/muhammetas/.gradle/caches/transforms-1/files-1.1/monitor-1.0.2.aar/08d78025bb5ba63faab494bbc4421c0b/AndroidManifest.xml:20:5-22:41
+MERGED from [com.android.support.test.uiautomator:uiautomator-v18:2.0.0] /home/muhammetas/.gradle/caches/transforms-1/files-1.1/uiautomator-v18-2.0.0.aar/28fb362e8628cc79d25591566683dfcd/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support.test.uiautomator:uiautomator-v18:2.0.0] /home/muhammetas/.gradle/caches/transforms-1/files-1.1/uiautomator-v18-2.0.0.aar/28fb362e8628cc79d25591566683dfcd/AndroidManifest.xml:20:5-44
+MERGED from [com.amazonaws:aws-android-sdk-auth-core:2.12.7] /home/muhammetas/.gradle/caches/transforms-1/files-1.1/aws-android-sdk-auth-core-2.12.7.aar/b5d945edbe18076fa67efa6d10d1ba13/AndroidManifest.xml:4:1-69
+MERGED from [com.amazonaws:aws-android-sdk-auth-core:2.12.7] /home/muhammetas/.gradle/caches/transforms-1/files-1.1/aws-android-sdk-auth-core-2.12.7.aar/b5d945edbe18076fa67efa6d10d1ba13/AndroidManifest.xml:4:1-69
+MERGED from [com.android.support.test.espresso:espresso-idling-resource:3.0.2] /home/muhammetas/.gradle/caches/transforms-1/files-1.1/espresso-idling-resource-3.0.2.aar/69e5cc68da42dab042737852a21cbf5e/AndroidManifest.xml:20:5-22:41
+MERGED from [com.android.support.test.espresso:espresso-idling-resource:3.0.2] /home/muhammetas/.gradle/caches/transforms-1/files-1.1/espresso-idling-resource-3.0.2.aar/69e5cc68da42dab042737852a21cbf5e/AndroidManifest.xml:20:5-22:41
+MERGED from [android.arch.lifecycle:runtime:1.1.0] /home/muhammetas/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/e81de80d7fa7fa777c5ce872bc023996/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.0] /home/muhammetas/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/e81de80d7fa7fa777c5ce872bc023996/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.0] /home/muhammetas/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.0.aar/d3f4b927039cc98d862e87e608c553da/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.0] /home/muhammetas/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.0.aar/d3f4b927039cc98d862e87e608c553da/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.0] /home/muhammetas/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.0.aar/47d4b923cff052d6cd356666c1f933a9/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.0] /home/muhammetas/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.0.aar/47d4b923cff052d6cd356666c1f933a9/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.0] /home/muhammetas/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/c4733d4261d6eb59ebc030f12623ded4/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.0] /home/muhammetas/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/c4733d4261d6eb59ebc030f12623ded4/AndroidManifest.xml:20:5-44
+INJECTED from /home/muhammetas/Desktop/dual_camera_vestel/usbCamera/src/main/AndroidManifest.xml
+INJECTED from /home/muhammetas/Desktop/dual_camera_vestel/usbCamera/src/main/AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from /home/muhammetas/Desktop/dual_camera_vestel/usbCamera/src/main/AndroidManifest.xml
+		ADDED from /home/muhammetas/Desktop/dual_camera_vestel/usbCamera/src/main/AndroidManifest.xml
+		INJECTED from /home/muhammetas/Desktop/dual_camera_vestel/usbCamera/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /home/muhammetas/Desktop/dual_camera_vestel/usbCamera/src/main/AndroidManifest.xml
+		ADDED from /home/muhammetas/Desktop/dual_camera_vestel/usbCamera/src/main/AndroidManifest.xml
+		INJECTED from /home/muhammetas/Desktop/dual_camera_vestel/usbCamera/src/main/AndroidManifest.xml
+uses-feature#android.hardware.camera.autofocus
+ADDED from [:configCamera] /home/muhammetas/Desktop/dual_camera_vestel/configCamera/build/intermediates/manifests/full/debug/AndroidManifest.xml:24:5-26:36
+	android:required
+		ADDED from [:configCamera] /home/muhammetas/Desktop/dual_camera_vestel/configCamera/build/intermediates/manifests/full/debug/AndroidManifest.xml:26:9-33
+	android:name
+		ADDED from [:configCamera] /home/muhammetas/Desktop/dual_camera_vestel/configCamera/build/intermediates/manifests/full/debug/AndroidManifest.xml:25:9-57
+uses-feature#android.hardware.Camera
+ADDED from [:configCamera] /home/muhammetas/Desktop/dual_camera_vestel/configCamera/build/intermediates/manifests/full/debug/AndroidManifest.xml:27:5-29:36
+	android:required
+		ADDED from [:configCamera] /home/muhammetas/Desktop/dual_camera_vestel/configCamera/build/intermediates/manifests/full/debug/AndroidManifest.xml:29:9-33
+	android:name
+		ADDED from [:configCamera] /home/muhammetas/Desktop/dual_camera_vestel/configCamera/build/intermediates/manifests/full/debug/AndroidManifest.xml:28:9-47

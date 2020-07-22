@@ -1,0 +1,17 @@
+{
+
+"CredentialsProvider": {
+  "CognitoIdentity": {
+    "Default": {
+      "PoolId": "us-east-1:02be9b14-82b7-4ee9-a779-608484127c00",
+      "Region": "us-east-1"
+    }
+  }
+},
+  "S3TransferUtility": {
+    "Default": {
+      "Bucket": "mybucketi9-envir",
+      "Region": "us-east-1"
+    }
+  }
+}

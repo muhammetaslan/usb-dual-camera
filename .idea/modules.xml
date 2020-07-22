@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/configCamera/configCamera.iml" filepath="$PROJECT_DIR$/configCamera/configCamera.iml" group="dual_camera_vestel/configCamera" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/dual_camera_vestel.iml" filepath="$PROJECT_DIR$/.idea/modules/dual_camera_vestel.iml" group="dual_camera_vestel" />
+      <module fileurl="file://$PROJECT_DIR$/libuvccamera/libuvccamera.iml" filepath="$PROJECT_DIR$/libuvccamera/libuvccamera.iml" group="dual_camera_vestel/libuvccamera" />
+      <module fileurl="file://$PROJECT_DIR$/usbCamera/usbCamera.iml" filepath="$PROJECT_DIR$/usbCamera/usbCamera.iml" group="dual_camera_vestel/usbCamera" />
+      <module fileurl="file://$PROJECT_DIR$/usbCameraCommon/usbCameraCommon.iml" filepath="$PROJECT_DIR$/usbCameraCommon/usbCameraCommon.iml" group="dual_camera_vestel/usbCameraCommon" />
+    </modules>
+  </component>
+</project>
