@@ -18,13 +18,6 @@ import android.widget.RelativeLayout;
 import com.androidhiddencamera.config.CameraFacing;
 import com.serenegiant.common.BaseActivity;
 
-/**
- * Created by Keval on 27-Oct-16.
- * This abstract class provides ability to handle background camera to the activity in which it is
- * extended.
- *
- * @author {@link 'https://github.com/kevalpatel2106'}
- */
 
 public abstract class HiddenCameraActivity extends BaseActivity implements CameraCallbacks {
 
@@ -75,17 +68,15 @@ public abstract class HiddenCameraActivity extends BaseActivity implements Camer
      * initialize the camera using {@link #startCamera(CameraConfig)} before using this function.
      */
     protected void takePicture() {
-        Log.d("zxcv","takepic");
+        Log.e("zxcv","takepic");
 
         if (mCameraPreview != null) {
-            Log.d("zxcv","preview null değşil");
+            Log.e("zxcv","preview not null");
 
             if (mCameraPreview.isSafeToTakePictureInternal()) {
-                Log.d("zxcv","safe control" +
-                        "");
-
+                Log.e("zxcv","safe control");
                 mCameraPreview.takePictureInternal();
-                Log.d("zxcv","girdi");
+                Log.e("zxcv","girdi");
             }
         } else {
             throw new RuntimeException("Background camera not initialized. Call startCamera() to initialize the camera.");

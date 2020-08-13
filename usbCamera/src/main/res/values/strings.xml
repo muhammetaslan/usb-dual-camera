@@ -21,7 +21,7 @@
   ~  may have a different license, see the respective files.
   -->
 <resources>
-    <string name="app_name">USBCamera</string>
+    <string name="app_name">Vestel USBCamera</string>
     <string name="take">takeTwoPhoto</string>
     <string name="error_cannot_write">Cannot write image captured by camera.</string>
     <string name="error_cannot_open">Cannot open camera.</string>

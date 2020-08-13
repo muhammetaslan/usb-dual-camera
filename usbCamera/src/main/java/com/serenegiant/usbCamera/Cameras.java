@@ -6,8 +6,6 @@ import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.SurfaceTexture;
-import android.hardware.Sensor;
-import android.hardware.SensorManager;
 import android.hardware.usb.UsbDevice;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -42,15 +40,16 @@ import java.io.File;
 
 /**
  * Show side by side view from two camera.
- * You cane record video images from both camera, but secondarily started recording can not record
+ * You can record video images from both camera, but secondarily started recording can not record
  * audio because of limitation of Android AudioRecord(only one instance of AudioRecord is available
  * on the device) now.
  */
 public final class Cameras extends HiddenCameraActivity implements CameraDialog.CameraDialogParent {
+
     private static final boolean DEBUG = true;    // FIXME set false when production
     private static final String TAG = "Cameras";
     private final Object mSync = new Object();
-    private static final float[] BANDWIDTH_FACTORS = {0.9f, 0.9f};
+    private static final float[] BANDWIDTH_FACTORS = {0.8f, 0.8f};
 
     // for accessing USB and USB camera
     private USBMonitor mUSBMonitor;
@@ -68,18 +67,17 @@ public final class Cameras extends HiddenCameraActivity implements CameraDialog.
     private ImageButton mCaptureButtonL;
     private Surface mLeftPreviewSurface;
 
-    //Button take2Photo;
-    Thread threadL, threadDevice,threadR;
-    private Sensor lightSensor;
-    private SensorManager sensorManager;
+
+    //Thread threadL, threadDevice, threadR;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cameras);
 
+        Log.e("DualCameras:", "OnCreate");
+
         //device camera
-        /****************************************************/
         findViewById(R.id.RelativeLayout1).setOnClickListener(mOnClickListener);
 
         // first camera layout component
@@ -88,7 +86,7 @@ public final class Cameras extends HiddenCameraActivity implements CameraDialog.
         ((UVCCameraTextureView) mUVCCameraViewL).setOnClickListener(mOnClickListener);
         mCaptureButtonL = (ImageButton) findViewById(R.id.capture_button_L);
         mCaptureButtonL.setOnClickListener(mOnClickListener);
-        mCaptureButtonL.setVisibility(View.INVISIBLE);
+        mCaptureButtonL.setVisibility(View.VISIBLE);
 
         // second camera layout component
         mUVCCameraViewR = (CameraViewInterface) findViewById(R.id.camera_view_R);
@@ -96,41 +94,47 @@ public final class Cameras extends HiddenCameraActivity implements CameraDialog.
         ((UVCCameraTextureView) mUVCCameraViewR).setOnClickListener(mOnClickListener);
         mCaptureButtonR = (ImageButton) findViewById(R.id.capture_button_R);
         mCaptureButtonR.setOnClickListener(mOnClickListener);
-        mCaptureButtonR.setVisibility(View.INVISIBLE);
+        mCaptureButtonR.setVisibility(View.VISIBLE);
 
         mCameraConfig = new CameraConfig()
                 .getBuilder(this)
                 .setCameraFacing(CameraFacing.REAR_FACING_CAMERA)
-                .setCameraResolution(CameraResolution.HIGH_RESOLUTION)
+                .setCameraResolution(CameraResolution.MEDIUM_RESOLUTION)
                 .setImageFormat(CameraImageFormat.FORMAT_JPEG)
-                .setImageRotation(CameraRotation.ROTATION_270)
+                .setImageRotation(CameraRotation.ROTATION_0)
                 .setCameraFocus(CameraFocus.AUTO)
                 .build("/storage/emulated/0/DCIM/USBCameraTest/");
 
         //Check for the camera permission for the runtime
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
                 == PackageManager.PERMISSION_GRANTED) {
-
+            Log.e("DualCameras", "camera permission if");
             //Start camera preview
             startCamera(mCameraConfig);
         } else {
+            Log.e("DualCameras", "camera permission else");
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA},
                     REQ_CODE_CAMERA_PERMISSION);
         }
 
         synchronized (mSync) {
+            Log.e("DualCameras", "synchronized");
             mUSBMonitor = new USBMonitor(this, mOnDeviceConnectListener);
 
+            /*
+            * olay burada
+            */
             mHandlerR = UVCCameraHandler.createHandler(this, mUVCCameraViewR, 0,
                     UVCCamera.DEFAULT_PREVIEW_WIDTH, UVCCamera.DEFAULT_PREVIEW_HEIGHT, UVCCamera.FRAME_FORMAT_MJPEG, BANDWIDTH_FACTORS[1]);
             mHandlerL = UVCCameraHandler.createHandler(this, mUVCCameraViewL, 0,
                     UVCCamera.DEFAULT_PREVIEW_WIDTH, UVCCamera.DEFAULT_PREVIEW_HEIGHT, UVCCamera.FRAME_FORMAT_MJPEG, BANDWIDTH_FACTORS[0]);
+
+            int he = mHandlerR.getHeight();
+            int we = mHandlerR.getWidth();
+            System.err.println("hooopp R height and we" + he + " " + we);
+
         }
-
-        sensorManager = (SensorManager) this.getSystemService(SENSOR_SERVICE);
-        lightSensor = sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
-
-
+/*
          threadL = new Thread(new Runnable()  {
 
             @Override
@@ -153,10 +157,11 @@ public final class Cameras extends HiddenCameraActivity implements CameraDialog.
 
             @Override
             public void run() {
-
+                Log.e("takePictureCameras:" , "Cameras");
                 takePicture();
             }
         });
+*/
     }
 
     @Override
@@ -208,6 +213,7 @@ public final class Cameras extends HiddenCameraActivity implements CameraDialog.
     //set camera surface click listener.
     //TODO make it programatically to automaic register USB
     public final OnClickListener mOnClickListener = new OnClickListener() {
+
         @Override
         public void onClick(final View view) {
             switch (view.getId()) {
@@ -227,9 +233,10 @@ public final class Cameras extends HiddenCameraActivity implements CameraDialog.
                             //TODO when app open getRequest will run
 
                             if (checkPermissionWriteExternalStorage()) {
-                                mHandlerL.captureStill();
+                                mHandlerL.captureStill("/system/media/USBCameraTest/");
+                                //takePicture();
                             }
-                            Toast.makeText(Cameras.this, "oldu", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Cameras.this, "Oldu L", Toast.LENGTH_SHORT).show();
                         }
                     }
                     break;
@@ -247,9 +254,10 @@ public final class Cameras extends HiddenCameraActivity implements CameraDialog.
                     if (mHandlerR != null) {
                         if (mHandlerR.isOpened()) {
                             if (checkPermissionWriteExternalStorage()) {
-                                mHandlerR.captureStill();
-
+                                mHandlerR.captureStill("/storage/emulated/0/DCIM/USBCameraTest/");
+                                //takePicture();
                             }
+                            Toast.makeText(Cameras.this, "Oldu R", Toast.LENGTH_SHORT).show();
                         }
                     }
                     break;
@@ -302,9 +310,11 @@ public final class Cameras extends HiddenCameraActivity implements CameraDialog.
             Toast.makeText(Cameras.this, "USB_DEVICE_ATTACHED", Toast.LENGTH_SHORT).show();
         }
 
+        //  device start the capture frame
         @Override
         public void onConnect(final UsbDevice device, final UsbControlBlock ctrlBlock, final boolean createNew) {
-            if (DEBUG) Log.e(TAG, "onConnect:" + device);
+            if (DEBUG) Log.e(TAG, "onConnect to ves device :" + device);
+
             if (!mHandlerL.isOpened()) {
                 mHandlerL.open(ctrlBlock);
                 final SurfaceTexture st = mUVCCameraViewL.getSurfaceTexture();
@@ -312,10 +322,11 @@ public final class Cameras extends HiddenCameraActivity implements CameraDialog.
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-
-                        //mCaptureButtonL.setVisibility(View.VISIBLE);
+                        mCaptureButtonL.setVisibility(View.VISIBLE);
+                        Log.e(TAG, " mCaptureButtonL");
                     }
                 });
+
             } else if (!mHandlerR.isOpened()) {
                 mHandlerR.open(ctrlBlock);
                 final SurfaceTexture st = mUVCCameraViewR.getSurfaceTexture();
@@ -323,10 +334,12 @@ public final class Cameras extends HiddenCameraActivity implements CameraDialog.
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        //mCaptureButtonR.setVisibility(View.VISIBLE);
+                        mCaptureButtonR.setVisibility(View.VISIBLE);
+                        Log.e(TAG, " mCaptureButtonR");
                     }
                 });
             }
+
         }
 
         @Override
@@ -434,9 +447,9 @@ public final class Cameras extends HiddenCameraActivity implements CameraDialog.
         Bitmap bitmap = BitmapFactory.decodeFile(imageFile.getAbsolutePath(), options);
 
         //The captured photo is upload to the AWS S3.
-        beginUpload(imageFile.getPath());
+        //beginUpload(imageFile.getPath());
         //Display the image to the image view
-       // ((ImageView) findViewById(R.id.cam_prev)).setImageBitmap(bitmap);
+        //((ImageView) findViewById(R.id.cam_prev)).setImageBitmap(bitmap);
     }
 
     @Override

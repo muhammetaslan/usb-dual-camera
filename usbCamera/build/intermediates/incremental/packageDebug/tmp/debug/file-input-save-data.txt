@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Thu Jul 02 15:55:15 EET 2020
+#Wed Aug 12 11:47:00 EET 2020
 4.path=lib/armeabi-v7a/libjpeg-turbo1500.so
 8.set=NATIVE_RESOURCE
 6.path=lib/armeabi-v7a/libuvc.so

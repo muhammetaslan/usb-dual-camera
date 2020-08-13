@@ -12,15 +12,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.amazonaws.mobileconnectors.s3.transferutility.TransferObserver;
-import com.amazonaws.mobileconnectors.s3.transferutility.TransferUtility;
-import com.serenegiant.UtilAWSS3.Util;
 import com.serenegiant.dialog.MessageDialogFragmentV4;
 import com.serenegiant.utils.BuildCheck;
 import com.serenegiant.utils.HandlerThreadHandler;
 import com.serenegiant.utils.PermissionCheck;
-
-import java.io.File;
 
 public class BaseActivity extends AppCompatActivity
 	implements MessageDialogFragmentV4.MessageDialogListener {
@@ -35,10 +30,6 @@ public class BaseActivity extends AppCompatActivity
 	private Handler mWorkerHandler;
 	private long mWorkerThreadID = -1;
 
-	// The TransferUtility is the primary class for managing transfer to S3
-	static TransferUtility transferUtility;
-	// Reference to the utility class
-	static Util util;
 
 	@Override
 	protected void onCreate(final Bundle savedInstanceState) {
@@ -48,9 +39,6 @@ public class BaseActivity extends AppCompatActivity
 			mWorkerHandler = HandlerThreadHandler.createHandler(TAG);
 			mWorkerThreadID = mWorkerHandler.getLooper().getThread().getId();
 		}
-		// Initializes TransferUtility, always do this before using it.
-		util = new Util();
-		transferUtility = util.getTransferUtility(this);
 	}
 
 	@Override
@@ -60,28 +48,7 @@ public class BaseActivity extends AppCompatActivity
 	}
 
 
-	//upload aws photo
-	public static void beginUpload(String filePath) {
-		if (filePath == null) {
 
-			return;
-		}
-
-		File file = new File(filePath);
-		TransferObserver observer = transferUtility.upload(
-				file.getName(),
-				file
-		);
-
-		/*
-		 * Note that usually we set the transfer listener after initializing the
-		 * transfer. However it isn't required in this sample app. The flow is
-		 * click upload button -> start an activity for image selection
-		 * startActivityForResult -> onActivityResult -> beginUpload -> onResume
-		 * -> set listeners to in progress transfers.
-		 */
-		// observer.setTransferListener(new UploadListener());
-	}
 	@Override
 	protected synchronized void onDestroy() {
 		// ワーカースレッドを破棄

@@ -1,44 +1,15 @@
-/*
- *  UVCCamera
- *  library and sample to access to UVC web camera on non-rooted Android device
- *
- * Copyright (c) 2014-2017 saki t_saki@serenegiant.com
- *
- *  Licensed under the Apache License, Version 2.0 (the "License");
- *  you may not use this file except in compliance with the License.
- *   You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- *   Unless required by applicable law or agreed to in writing, software
- *   distributed under the License is distributed on an "AS IS" BASIS,
- *   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *   See the License for the specific language governing permissions and
- *   limitations under the License.
- *
- *  All files in the folder are under this Apache License, Version 2.0.
- *  Files in the libjpeg-turbo, libusb, libuvc, rapidjson folder
- *  may have a different license, see the respective files.
- */
-
 package com.serenegiant.usb;
 
 import java.util.Locale;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.util.Log;
 
 public class Size implements Parcelable {
-	//
-	/**
-	 * native側のuvc_raw_format_tの値, こっちは主にlibuvc用
-	 * 9999 is still image
-	 */
+
 	public int type;
-	/**
-	 * native側のraw_frame_tの値, androusb用,
-	 * libuvcは対応していない
-	 */
+
 	public int frame_type;
 	public int index;
 	public int width;
@@ -46,14 +17,12 @@ public class Size implements Parcelable {
 	public int frameIntervalType;
 	public int frameIntervalIndex;
 	public int[] intervals;
-	// ここ以下はframeIntervalTypeとintervalsから#updateFrameRateで計算する
 	public float[] fps;
 	private String frameRates;
 
 	/**
-	 * コンストラクタ
-	 * @param _type native側のraw_format_tの値, ただし9999は静止画
-	 * @param _frame_type native側のraw_frame_tの値
+	 * @param _type native raw_format_t
+	 * @param _frame_type native raw_frame_t
 	 * @param _index
 	 * @param _width
 	 * @param _height
@@ -259,7 +228,6 @@ public class Size implements Parcelable {
 					}
 				}
 			} catch (final Exception e) {
-				// ignore, なんでかminとmaxが0になってるんちゃうかな
 				fps = null;
 			}
 		}
@@ -286,6 +254,7 @@ public class Size implements Parcelable {
 			frame_rate = getCurrentFrameRate();
 		} catch (final Exception e) {
 		}
+		Log.i("FPS : ", frameRates);
 		return String.format(Locale.US, "Size(%dx%d@%4.1f,type:%d,frame:%d,index:%d,%s)", width, height, frame_rate, type, frame_type, index, frameRates);
 	}
 

@@ -1,4 +1,4 @@
-#Wed Jul 22 15:50:03 EET 2020
+#Thu Aug 13 16:51:15 EET 2020
 base.0=/home/muhammetas/Desktop/dual_camera_vestel/usbCamera/build/intermediates/transforms/dexMerger/debug/0
 path.0=classes.dex
 renamed.0=classes.dex

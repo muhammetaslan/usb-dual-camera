@@ -22,12 +22,6 @@ import android.support.annotation.IntDef;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
-/**
- * Created by Keval on 10-Nov-16.
- * Supported camera focus.
- *
- * @author {@link 'https://github.com/kevalpatel2106'}
- */
 
 public final class CameraFocus {
 

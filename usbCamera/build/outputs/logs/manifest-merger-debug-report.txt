@@ -5,7 +5,7 @@ INJECTED from /home/muhammetas/Desktop/dual_camera_vestel/usbCamera/src/main/And
 INJECTED from /home/muhammetas/Desktop/dual_camera_vestel/usbCamera/src/main/AndroidManifest.xml:2:1-37:12
 INJECTED from /home/muhammetas/Desktop/dual_camera_vestel/usbCamera/src/main/AndroidManifest.xml:2:1-37:12
 MERGED from [:usbCameraCommon] /home/muhammetas/Desktop/dual_camera_vestel/usbCameraCommon/build/intermediates/manifests/full/debug/AndroidManifest.xml:2:1-9:12
-MERGED from [:configCamera] /home/muhammetas/Desktop/dual_camera_vestel/configCamera/build/intermediates/manifests/full/debug/AndroidManifest.xml:17:1-36:12
+MERGED from [:configCamera] /home/muhammetas/Desktop/dual_camera_vestel/configCamera/build/intermediates/manifests/full/debug/AndroidManifest.xml:2:1-21:12
 MERGED from [:libuvccamera] /home/muhammetas/Desktop/dual_camera_vestel/libuvccamera/build/intermediates/manifests/full/debug/AndroidManifest.xml:24:1-33:12
 MERGED from [com.android.support:support-v4:27.1.1] /home/muhammetas/.gradle/caches/transforms-1/files-1.1/support-v4-27.1.1.aar/67f05420554fda9289afcb1a2d3b842c/AndroidManifest.xml:17:1-22:12
 MERGED from [com.amazonaws:aws-android-sdk-mobile-client:2.12.7] /home/muhammetas/.gradle/caches/transforms-1/files-1.1/aws-android-sdk-mobile-client-2.12.7.aar/de0391611506a9edef4bedb0efde1d8a/AndroidManifest.xml:2:1-9:12
@@ -85,16 +85,16 @@ ADDED from /home/muhammetas/Desktop/dual_camera_vestel/usbCamera/src/main/Androi
 		ADDED from /home/muhammetas/Desktop/dual_camera_vestel/usbCamera/src/main/AndroidManifest.xml:17:9-32
 application
 ADDED from /home/muhammetas/Desktop/dual_camera_vestel/usbCamera/src/main/AndroidManifest.xml:19:5-35:19
-MERGED from [:configCamera] /home/muhammetas/Desktop/dual_camera_vestel/configCamera/build/intermediates/manifests/full/debug/AndroidManifest.xml:31:5-34:38
-MERGED from [:configCamera] /home/muhammetas/Desktop/dual_camera_vestel/configCamera/build/intermediates/manifests/full/debug/AndroidManifest.xml:31:5-34:38
+MERGED from [:configCamera] /home/muhammetas/Desktop/dual_camera_vestel/configCamera/build/intermediates/manifests/full/debug/AndroidManifest.xml:16:5-19:38
+MERGED from [:configCamera] /home/muhammetas/Desktop/dual_camera_vestel/configCamera/build/intermediates/manifests/full/debug/AndroidManifest.xml:16:5-19:38
 MERGED from [com.android.support.test.uiautomator:uiautomator-v18:2.0.0] /home/muhammetas/.gradle/caches/transforms-1/files-1.1/uiautomator-v18-2.0.0.aar/28fb362e8628cc79d25591566683dfcd/AndroidManifest.xml:22:5-20
 MERGED from [com.android.support.test.uiautomator:uiautomator-v18:2.0.0] /home/muhammetas/.gradle/caches/transforms-1/files-1.1/uiautomator-v18-2.0.0.aar/28fb362e8628cc79d25591566683dfcd/AndroidManifest.xml:22:5-20
 	android:supportsRtl
-		ADDED from [:configCamera] /home/muhammetas/Desktop/dual_camera_vestel/configCamera/build/intermediates/manifests/full/debug/AndroidManifest.xml:34:9-35
+		ADDED from [:configCamera] /home/muhammetas/Desktop/dual_camera_vestel/configCamera/build/intermediates/manifests/full/debug/AndroidManifest.xml:19:9-35
 	android:label
 		ADDED from /home/muhammetas/Desktop/dual_camera_vestel/usbCamera/src/main/AndroidManifest.xml:22:9-41
 	android:hardwareAccelerated
-		ADDED from [:configCamera] /home/muhammetas/Desktop/dual_camera_vestel/configCamera/build/intermediates/manifests/full/debug/AndroidManifest.xml:33:9-43
+		ADDED from [:configCamera] /home/muhammetas/Desktop/dual_camera_vestel/configCamera/build/intermediates/manifests/full/debug/AndroidManifest.xml:18:9-43
 	android:icon
 		ADDED from /home/muhammetas/Desktop/dual_camera_vestel/usbCamera/src/main/AndroidManifest.xml:21:9-45
 	android:allowBackup
@@ -127,8 +127,8 @@ INJECTED from /home/muhammetas/Desktop/dual_camera_vestel/usbCamera/src/main/And
 INJECTED from /home/muhammetas/Desktop/dual_camera_vestel/usbCamera/src/main/AndroidManifest.xml
 MERGED from [:usbCameraCommon] /home/muhammetas/Desktop/dual_camera_vestel/usbCameraCommon/build/intermediates/manifests/full/debug/AndroidManifest.xml:5:5-7:41
 MERGED from [:usbCameraCommon] /home/muhammetas/Desktop/dual_camera_vestel/usbCameraCommon/build/intermediates/manifests/full/debug/AndroidManifest.xml:5:5-7:41
-MERGED from [:configCamera] /home/muhammetas/Desktop/dual_camera_vestel/configCamera/build/intermediates/manifests/full/debug/AndroidManifest.xml:20:5-22:41
-MERGED from [:configCamera] /home/muhammetas/Desktop/dual_camera_vestel/configCamera/build/intermediates/manifests/full/debug/AndroidManifest.xml:20:5-22:41
+MERGED from [:configCamera] /home/muhammetas/Desktop/dual_camera_vestel/configCamera/build/intermediates/manifests/full/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:configCamera] /home/muhammetas/Desktop/dual_camera_vestel/configCamera/build/intermediates/manifests/full/debug/AndroidManifest.xml:5:5-7:41
 MERGED from [:libuvccamera] /home/muhammetas/Desktop/dual_camera_vestel/libuvccamera/build/intermediates/manifests/full/debug/AndroidManifest.xml:29:5-31:41
 MERGED from [:libuvccamera] /home/muhammetas/Desktop/dual_camera_vestel/libuvccamera/build/intermediates/manifests/full/debug/AndroidManifest.xml:29:5-31:41
 MERGED from [com.android.support:support-v4:27.1.1] /home/muhammetas/.gradle/caches/transforms-1/files-1.1/support-v4-27.1.1.aar/67f05420554fda9289afcb1a2d3b842c/AndroidManifest.xml:20:5-44
@@ -192,14 +192,14 @@ INJECTED from /home/muhammetas/Desktop/dual_camera_vestel/usbCamera/src/main/And
 		ADDED from /home/muhammetas/Desktop/dual_camera_vestel/usbCamera/src/main/AndroidManifest.xml
 		INJECTED from /home/muhammetas/Desktop/dual_camera_vestel/usbCamera/src/main/AndroidManifest.xml
 uses-feature#android.hardware.camera.autofocus
-ADDED from [:configCamera] /home/muhammetas/Desktop/dual_camera_vestel/configCamera/build/intermediates/manifests/full/debug/AndroidManifest.xml:24:5-26:36
+ADDED from [:configCamera] /home/muhammetas/Desktop/dual_camera_vestel/configCamera/build/intermediates/manifests/full/debug/AndroidManifest.xml:9:5-11:36
 	android:required
-		ADDED from [:configCamera] /home/muhammetas/Desktop/dual_camera_vestel/configCamera/build/intermediates/manifests/full/debug/AndroidManifest.xml:26:9-33
+		ADDED from [:configCamera] /home/muhammetas/Desktop/dual_camera_vestel/configCamera/build/intermediates/manifests/full/debug/AndroidManifest.xml:11:9-33
 	android:name
-		ADDED from [:configCamera] /home/muhammetas/Desktop/dual_camera_vestel/configCamera/build/intermediates/manifests/full/debug/AndroidManifest.xml:25:9-57
+		ADDED from [:configCamera] /home/muhammetas/Desktop/dual_camera_vestel/configCamera/build/intermediates/manifests/full/debug/AndroidManifest.xml:10:9-57
 uses-feature#android.hardware.Camera
-ADDED from [:configCamera] /home/muhammetas/Desktop/dual_camera_vestel/configCamera/build/intermediates/manifests/full/debug/AndroidManifest.xml:27:5-29:36
+ADDED from [:configCamera] /home/muhammetas/Desktop/dual_camera_vestel/configCamera/build/intermediates/manifests/full/debug/AndroidManifest.xml:12:5-14:36
 	android:required
-		ADDED from [:configCamera] /home/muhammetas/Desktop/dual_camera_vestel/configCamera/build/intermediates/manifests/full/debug/AndroidManifest.xml:29:9-33
+		ADDED from [:configCamera] /home/muhammetas/Desktop/dual_camera_vestel/configCamera/build/intermediates/manifests/full/debug/AndroidManifest.xml:14:9-33
 	android:name
-		ADDED from [:configCamera] /home/muhammetas/Desktop/dual_camera_vestel/configCamera/build/intermediates/manifests/full/debug/AndroidManifest.xml:28:9-47
+		ADDED from [:configCamera] /home/muhammetas/Desktop/dual_camera_vestel/configCamera/build/intermediates/manifests/full/debug/AndroidManifest.xml:13:9-47

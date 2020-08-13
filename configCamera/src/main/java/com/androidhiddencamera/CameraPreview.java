@@ -196,7 +196,9 @@ class CameraPreview extends SurfaceView implements SurfaceHolder.Callback {
 
     void takePictureInternal() {
         safeToTakePicture = false;
+        Log.e("takePictureInternal"," in begin");
         if (mCamera != null) {
+            Log.e("takePictureInternal"," mCamera not null");
             mCamera.takePicture(null, null, new Camera.PictureCallback() {
                 @Override
                 public void onPictureTaken(final byte[] bytes, Camera camera) {
@@ -222,7 +224,7 @@ class CameraPreview extends SurfaceView implements SurfaceHolder.Callback {
                                     mCameraConfig.getImageFile(),
                                     mCameraConfig.getImageFormat())) {
 
-                                Log.d("asdf",""+mCameraConfig.getImageFile().getPath());
+                                Log.e("asdf",""+mCameraConfig.getImageFile().getPath());
 
                                 final File fileToUpload = new File(
                                         mCameraConfig.getImageFile().getPath()
@@ -255,6 +257,7 @@ class CameraPreview extends SurfaceView implements SurfaceHolder.Callback {
                 }
             });
         } else {
+            Log.e("takePictureInternal"," error camera open failed");
             mCameraCallbacks.onCameraError(CameraError.ERROR_CAMERA_OPEN_FAILED);
             safeToTakePicture = true;
         }

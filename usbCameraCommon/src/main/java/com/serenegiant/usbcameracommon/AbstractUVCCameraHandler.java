@@ -1,30 +1,8 @@
-/*
- *  UVCCamera
- *  library and sample to access to UVC web camera on non-rooted Android device
- *
- * Copyright (c) 2014-2017 saki t_saki@serenegiant.com
- *
- *  Licensed under the Apache License, Version 2.0 (the "License");
- *  you may not use this file except in compliance with the License.
- *   You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- *   Unless required by applicable law or agreed to in writing, software
- *   distributed under the License is distributed on an "AS IS" BASIS,
- *   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *   See the License for the specific language governing permissions and
- *   limitations under the License.
- *
- *  All files in the folder are under this Apache License, Version 2.0.
- *  Files in the libjpeg-turbo, libusb, libuvc, rapidjson folder
- *  may have a different license, see the respective files.
- */
-
 package com.serenegiant.usbcameracommon;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.ContextWrapper;
 import android.graphics.Bitmap;
 import android.graphics.SurfaceTexture;
 import android.hardware.usb.UsbDevice;
@@ -55,6 +33,7 @@ import com.serenegiant.widget.CameraViewInterface;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.lang.ref.WeakReference;
@@ -63,6 +42,8 @@ import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Set;
 import java.util.concurrent.CopyOnWriteArraySet;
 
@@ -310,16 +291,20 @@ public String path;
 			thread.handleClose();
 			break;
 		case MSG_PREVIEW_START:
+			Log.e(TAG, "switch msg preview start ");
 			thread.handleStartPreview(msg.obj);
 			break;
 		case MSG_PREVIEW_STOP:
+			Log.e(TAG, "switch msg preview stop ");
 			thread.handleStopPreview();
 			break;
 		case MSG_CAPTURE_STILL:
+			Log.e(TAG, "switch msg capture still ");
 			thread.handleCaptureStill((String)msg.obj);
 			break;
 		case MSG_CAPTURE_START:
 			thread.handleStartRecording();
+			Log.e(TAG, "switch msg capture start ");
 			break;
 		case MSG_CAPTURE_STOP:
 			thread.handleStopRecording();
@@ -519,26 +504,55 @@ public String path;
 		}
 
 		public void handleCaptureStill(final String path) {
-			if (DEBUG) Log.v(TAG_THREAD, "handleCaptureStill:");
+			if (DEBUG) Log.e(TAG_THREAD, "handleCaptureStill:");
 			final Activity parent = mWeakParent.get();
 			if (parent == null) return;
 			mSoundPool.play(mSoundId, 0.2f, 0.2f, 0, 0, 1.0f);	// play shutter sound
+			Log.e(TAG_THREAD, "handleCaptureStill: 1 ");
+
+			final Bitmap bitmap = mWeakCameraView.get().captureStillImage();
+			saveToInternalStorage(bitmap);
+			/*
+			File pictureFile = getOutputMediaFile();
+			Log.e(TAG_THREAD,"path : " + pictureFile);
+
+			if (pictureFile == null) {
+				Log.e(TAG_THREAD,
+						"Error creating media file, check storage permissions: ");// e.getMessage());
+				return;
+			}
+			try {
+				FileOutputStream fos = new FileOutputStream(pictureFile);
+				bitmap.compress(Bitmap.CompressFormat.PNG, 90, fos);
+				fos.close();
+			} catch (FileNotFoundException e) {
+				Log.e(TAG_THREAD, "File not found: " + e.getMessage());
+			} catch (IOException e) {
+				Log.e(TAG_THREAD, "Error accessing file: " + e.getMessage());
+			}
+			*/
+			/*
 			try {
 				final Bitmap bitmap = mWeakCameraView.get().captureStillImage();
 				// get buffered output stream for saving a captured still image as a file on external storage.
 				// the file name is came from current time.
 				// You should use extension name as same as CompressFormat when calling Bitmap#compress.
+				Log.e(TAG_THREAD, "handleCaptureStill: 2 ");
 				final File outputFile = TextUtils.isEmpty(path)
 					? MediaMuxerWrapper.getCaptureFile(Environment.DIRECTORY_DCIM,  System.currentTimeMillis()+".png")
 					: new File(path);
+
+				Log.e(TAG_THREAD, "handleCaptureStill: 2.5 file -> " + outputFile);
 				final BufferedOutputStream os = new BufferedOutputStream(new FileOutputStream(outputFile));
+				Log.e(TAG_THREAD, "handleCaptureStill: 3 ");
 				try {
 					try {
 						bitmap.compress(Bitmap.CompressFormat.PNG, 100, os);
 						os.flush();
+						Log.e(TAG_THREAD, "handleCaptureStill: 5");
 						mHandler.sendMessage(mHandler.obtainMessage(MSG_MEDIA_UPDATE, outputFile.getPath()));
-						BaseActivity.beginUpload(outputFile.getPath());
-
+						//BaseActivity.beginUpload(outputFile.getPath());
+						Log.e(TAG_THREAD, "handleCaptureStill: 6");
 					} catch (final IOException e) {
 					}
 				} finally {
@@ -547,6 +561,62 @@ public String path;
 			} catch (final Exception e) {
 				callOnError(e);
 			}
+			*/
+		}
+
+		/** Create a File for saving an image or video */
+		private  File getOutputMediaFile(){
+			// To be safe, you should check that the SDCard is mounted
+			// using Environment.getExternalStorageState() before doing this.
+			File mediaStorageDir = new File(Environment.getExternalStorageDirectory()
+					+ "/Android/data/"
+					+ "aslan"
+					+ "/Files");
+			Log.e(TAG_THREAD,"path getOutputMediaFile: " + mediaStorageDir);
+			// This location works best if you want the created images to be shared
+			// between applications and persist after your app has been uninstalled.
+
+			// Create the storage directory if it does not exist
+			if (! mediaStorageDir.exists()){
+				if (! mediaStorageDir.mkdirs()){
+					return null;
+				}
+			}
+			// Create a media file name
+			String timeStamp = new SimpleDateFormat("ddMMyyyy_HHmm").format(new Date());
+			File mediaFile;
+			String mImageName="MI_"+ timeStamp +".jpg";
+			mediaFile = new File(mediaStorageDir.getPath() + File.separator + mImageName);
+			return mediaFile;
+		}
+
+
+		private String saveToInternalStorage(Bitmap bitmapImage){
+			final Activity parent = mWeakParent.get();
+			ContextWrapper cw = new ContextWrapper(parent.getApplicationContext());
+			// path to /data/data/yourapp/app_data/imageDir
+			File directory = cw.getDir("imageDir", Context.MODE_PRIVATE);
+			// Create imageDir
+			Long tsLong = System.currentTimeMillis()/1000;
+			String timeStamp = tsLong.toString();
+
+			File mypath=new File(directory, timeStamp+".jpg");
+			Log.e(TAG_THREAD, "mypath : " + mypath);
+			FileOutputStream fos = null;
+			try {
+				fos = new FileOutputStream(mypath);
+				// Use the compress method on the BitMap object to write image to the OutputStream
+				bitmapImage.compress(Bitmap.CompressFormat.PNG, 100, fos);
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					fos.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+			return directory.getAbsolutePath();
 		}
 
 		public void handleStartRecording() {
