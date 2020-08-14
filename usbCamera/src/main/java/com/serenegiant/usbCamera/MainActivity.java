@@ -12,7 +12,7 @@ import com.serenegiant.common.BaseActivity;
 import com.serenegiant.usbcameratest7.R;
 
 /*
-* this class get the main_activity and start the camera action
+* this class get the main_activity and only start the camera activty
 * */
 public final class MainActivity extends BaseActivity  {
 
@@ -32,12 +32,13 @@ public final class MainActivity extends BaseActivity  {
         Toast.makeText(MainActivity.this, "Main of Application", Toast.LENGTH_SHORT).show();
         Log.e(TAG, "OnCreate");
         startActivity(new Intent(MainActivity.this, Cameras.class));
-        Log.e(TAG, "OnCreate 1");
+        /*
         findViewById(R.id.baslat).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //Take picture using the camera without preview.
             }
         });
+         */
     }
 }

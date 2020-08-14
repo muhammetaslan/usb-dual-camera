@@ -1,19 +1,3 @@
-/*
- * Copyright 2017 Keval Patel.
- *
- *  Licensed under the Apache License, Version 2.0 (the "License");
- *  you may not use this file except in compliance with the License.
- *  You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- *  Unless required by applicable law or agreed to in writing, software
- *  distributed under the License is distributed on an "AS IS" BASIS,
- *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *  See the License for the specific language governing permissions and
- *  limitations under the License.
- */
-
 package com.androidhiddencamera;
 
 import android.Manifest;
@@ -26,15 +10,12 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-
 import com.androidhiddencamera.config.CameraFacing;
 
 /**
  * Created by Keval on 27-Oct-16.
  * This abstract class provides ability to handle background camera to the fragment in which it is
  * extended.
- *
- * @author {@link 'https://github.com/kevalpatel2106'}
  */
 
 public abstract class HiddenCameraFragment extends Fragment implements CameraCallbacks {

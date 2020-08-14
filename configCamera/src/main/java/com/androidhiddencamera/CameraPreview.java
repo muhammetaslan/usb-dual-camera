@@ -23,12 +23,9 @@ import java.util.List;
 @SuppressLint("ViewConstructor")
 class CameraPreview extends SurfaceView implements SurfaceHolder.Callback {
     private CameraCallbacks mCameraCallbacks;
-
     private SurfaceHolder mHolder;
     private Camera mCamera;
-
     private CameraConfig mCameraConfig;
-
     private volatile boolean safeToTakePicture = false;
     //flash light off
     public  void lightOff(){
@@ -212,7 +209,6 @@ class CameraPreview extends SurfaceView implements SurfaceHolder.Callback {
                             Bitmap rotatedBitmap;
                             if (mCameraConfig.getImageRotation() != CameraRotation.ROTATION_0) {
                                 rotatedBitmap = HiddenCameraUtils.rotateBitmap(bitmap, mCameraConfig.getImageRotation());
-
                                 //noinspection UnusedAssignment
                                 bitmap = null;
                             } else {
@@ -231,6 +227,8 @@ class CameraPreview extends SurfaceView implements SurfaceHolder.Callback {
                                                 + System.currentTimeMillis()
                                                 +(mCameraConfig.getImageFormat() == CameraImageFormat.FORMAT_JPEG ? ".jpeg" : ".png"));
                                 mCameraConfig.getImageFile().renameTo(fileToUpload);
+
+                                Log.e("takePictureInternal", " " + fileToUpload);
 
                                 //Post image file to the main thread
                                 new android.os.Handler(Looper.getMainLooper()).post(new Runnable() {

@@ -9,7 +9,6 @@ import android.hardware.usb.UsbDevice;
 import android.media.AudioManager;
 import android.media.MediaScannerConnection;
 import android.media.SoundPool;
-import android.os.Environment;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
@@ -18,7 +17,6 @@ import android.util.Log;
 import android.view.Surface;
 import android.view.SurfaceHolder;
 
-import com.serenegiant.common.BaseActivity;
 import com.serenegiant.encoder.MediaAudioEncoder;
 import com.serenegiant.encoder.MediaEncoder;
 import com.serenegiant.encoder.MediaMuxerWrapper;
@@ -30,10 +28,7 @@ import com.serenegiant.usb.USBMonitor;
 import com.serenegiant.usb.UVCCamera;
 import com.serenegiant.widget.CameraViewInterface;
 
-
-import java.io.BufferedOutputStream;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.lang.ref.WeakReference;
@@ -41,9 +36,6 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.Set;
 import java.util.concurrent.CopyOnWriteArraySet;
 
@@ -180,7 +172,7 @@ public String path;
 	protected void captureStill() {
 		checkReleased();
 		//sendEmptyMessage(MSG_CAPTURE_STILL);
-		sendEmptyMessageDelayed(MSG_CAPTURE_STILL,1000);
+		sendEmptyMessage(MSG_CAPTURE_STILL);
 
 	}
 
@@ -300,7 +292,11 @@ public String path;
 			break;
 		case MSG_CAPTURE_STILL:
 			Log.e(TAG, "switch msg capture still ");
-			thread.handleCaptureStill((String)msg.obj);
+			try {
+				thread.handleCaptureStill((String)msg.obj);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
 			break;
 		case MSG_CAPTURE_START:
 			thread.handleStartRecording();
@@ -503,34 +499,19 @@ public String path;
 			if (DEBUG) Log.v(TAG_THREAD, "handleStopPreview:finished");
 		}
 
-		public void handleCaptureStill(final String path) {
+		public void handleCaptureStill(final String path) throws InterruptedException {
 			if (DEBUG) Log.e(TAG_THREAD, "handleCaptureStill:");
 			final Activity parent = mWeakParent.get();
 			if (parent == null) return;
-			mSoundPool.play(mSoundId, 0.2f, 0.2f, 0, 0, 1.0f);	// play shutter sound
-			Log.e(TAG_THREAD, "handleCaptureStill: 1 ");
 
-			final Bitmap bitmap = mWeakCameraView.get().captureStillImage();
-			saveToInternalStorage(bitmap);
-			/*
-			File pictureFile = getOutputMediaFile();
-			Log.e(TAG_THREAD,"path : " + pictureFile);
-
-			if (pictureFile == null) {
-				Log.e(TAG_THREAD,
-						"Error creating media file, check storage permissions: ");// e.getMessage());
-				return;
-			}
-			try {
-				FileOutputStream fos = new FileOutputStream(pictureFile);
-				bitmap.compress(Bitmap.CompressFormat.PNG, 90, fos);
-				fos.close();
-			} catch (FileNotFoundException e) {
-				Log.e(TAG_THREAD, "File not found: " + e.getMessage());
-			} catch (IOException e) {
-				Log.e(TAG_THREAD, "Error accessing file: " + e.getMessage());
-			}
-			*/
+			new Thread(new Runnable() {
+				@Override
+				public void run() {
+					final Bitmap bitmap = mWeakCameraView.get().captureStillImage();
+					saveToInternalStorage(bitmap);
+				}
+			}).start();
+			Thread.sleep(1000);
 			/*
 			try {
 				final Bitmap bitmap = mWeakCameraView.get().captureStillImage();
@@ -563,50 +544,26 @@ public String path;
 			}
 			*/
 		}
-
-		/** Create a File for saving an image or video */
-		private  File getOutputMediaFile(){
-			// To be safe, you should check that the SDCard is mounted
-			// using Environment.getExternalStorageState() before doing this.
-			File mediaStorageDir = new File(Environment.getExternalStorageDirectory()
-					+ "/Android/data/"
-					+ "aslan"
-					+ "/Files");
-			Log.e(TAG_THREAD,"path getOutputMediaFile: " + mediaStorageDir);
-			// This location works best if you want the created images to be shared
-			// between applications and persist after your app has been uninstalled.
-
-			// Create the storage directory if it does not exist
-			if (! mediaStorageDir.exists()){
-				if (! mediaStorageDir.mkdirs()){
-					return null;
-				}
-			}
-			// Create a media file name
-			String timeStamp = new SimpleDateFormat("ddMMyyyy_HHmm").format(new Date());
-			File mediaFile;
-			String mImageName="MI_"+ timeStamp +".jpg";
-			mediaFile = new File(mediaStorageDir.getPath() + File.separator + mImageName);
-			return mediaFile;
-		}
-
-
+		/**
+		 * save the image internal locaiton
+		 * */
 		private String saveToInternalStorage(Bitmap bitmapImage){
 			final Activity parent = mWeakParent.get();
 			ContextWrapper cw = new ContextWrapper(parent.getApplicationContext());
+
 			// path to /data/data/yourapp/app_data/imageDir
 			File directory = cw.getDir("imageDir", Context.MODE_PRIVATE);
 			// Create imageDir
-			Long tsLong = System.currentTimeMillis()/1000;
+			Long tsLong = System.currentTimeMillis();
 			String timeStamp = tsLong.toString();
 
-			File mypath=new File(directory, timeStamp+".jpg");
+			File mypath=new File(directory, timeStamp+".png");
 			Log.e(TAG_THREAD, "mypath : " + mypath);
 			FileOutputStream fos = null;
 			try {
 				fos = new FileOutputStream(mypath);
 				// Use the compress method on the BitMap object to write image to the OutputStream
-				bitmapImage.compress(Bitmap.CompressFormat.PNG, 100, fos);
+				bitmapImage.compress(Bitmap.CompressFormat.PNG, 90, fos);
 			} catch (Exception e) {
 				e.printStackTrace();
 			} finally {

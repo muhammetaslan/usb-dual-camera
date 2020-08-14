@@ -94,13 +94,13 @@ public final class Cameras extends HiddenCameraActivity implements CameraDialog.
         ((UVCCameraTextureView) mUVCCameraViewR).setOnClickListener(mOnClickListener);
         mCaptureButtonR = (ImageButton) findViewById(R.id.capture_button_R);
         mCaptureButtonR.setOnClickListener(mOnClickListener);
-        mCaptureButtonR.setVisibility(View.VISIBLE);
+        mCaptureButtonR.setVisibility(View.INVISIBLE);
 
         mCameraConfig = new CameraConfig()
                 .getBuilder(this)
                 .setCameraFacing(CameraFacing.REAR_FACING_CAMERA)
                 .setCameraResolution(CameraResolution.MEDIUM_RESOLUTION)
-                .setImageFormat(CameraImageFormat.FORMAT_JPEG)
+                .setImageFormat(CameraImageFormat.FORMAT_PNG)
                 .setImageRotation(CameraRotation.ROTATION_0)
                 .setCameraFocus(CameraFocus.AUTO)
                 .build("/storage/emulated/0/DCIM/USBCameraTest/");
@@ -122,16 +122,12 @@ public final class Cameras extends HiddenCameraActivity implements CameraDialog.
             mUSBMonitor = new USBMonitor(this, mOnDeviceConnectListener);
 
             /*
-            * olay burada
+            * creating camera handler
             */
             mHandlerR = UVCCameraHandler.createHandler(this, mUVCCameraViewR, 0,
                     UVCCamera.DEFAULT_PREVIEW_WIDTH, UVCCamera.DEFAULT_PREVIEW_HEIGHT, UVCCamera.FRAME_FORMAT_MJPEG, BANDWIDTH_FACTORS[1]);
             mHandlerL = UVCCameraHandler.createHandler(this, mUVCCameraViewL, 0,
                     UVCCamera.DEFAULT_PREVIEW_WIDTH, UVCCamera.DEFAULT_PREVIEW_HEIGHT, UVCCamera.FRAME_FORMAT_MJPEG, BANDWIDTH_FACTORS[0]);
-
-            int he = mHandlerR.getHeight();
-            int we = mHandlerR.getWidth();
-            System.err.println("hooopp R height and we" + he + " " + we);
 
         }
 /*
@@ -231,10 +227,12 @@ public final class Cameras extends HiddenCameraActivity implements CameraDialog.
                     if (mHandlerL != null) {
                         if (mHandlerL.isOpened()) {
                             //TODO when app open getRequest will run
-
                             if (checkPermissionWriteExternalStorage()) {
-                                mHandlerL.captureStill("/system/media/USBCameraTest/");
-                                //takePicture();
+                                for (int i =0;i<=2;i++) {
+                                    mHandlerL.captureStill();
+                                    mHandlerR.captureStill();
+                                }
+
                             }
                             Toast.makeText(Cameras.this, "Oldu L", Toast.LENGTH_SHORT).show();
                         }
@@ -250,53 +248,19 @@ public final class Cameras extends HiddenCameraActivity implements CameraDialog.
                         }
                     }
                     break;
+                    // take photo only for second camera
+                    /*
                 case R.id.capture_button_R:
                     if (mHandlerR != null) {
                         if (mHandlerR.isOpened()) {
                             if (checkPermissionWriteExternalStorage()) {
-                                mHandlerR.captureStill("/storage/emulated/0/DCIM/USBCameraTest/");
-                                //takePicture();
+                                mHandlerR.captureStill();
                             }
                             Toast.makeText(Cameras.this, "Oldu R", Toast.LENGTH_SHORT).show();
                         }
                     }
                     break;
-
-//                case R.id.takeTwoPhoto:
-//
-//                    takeTwoL();
-//                    try {
-//                        Thread.sleep(1000);
-//                        takeTwoR();
-//                    } catch (InterruptedException e) {
-//                        e.printStackTrace();
-//                    }
-//
-//                    Toast.makeText(Cameras.this, "????oldu", Toast.LENGTH_SHORT).show();
-//
-//                    /*if (checkPermissionWriteExternalStorage()) {
-//
-//                        if (mHandlerR != null) {
-//                            if (mHandlerR.isOpened()) {
-//                                mHandlerR.captureStill();
-//                            }
-//                        }
-//                        try {
-//                            Thread.sleep(1100);
-//                        } catch (InterruptedException e) {
-//                            e.printStackTrace();
-//                        }
-//                        if (mHandlerL != null) {
-//                            if (mHandlerL.isOpened()) {
-//
-//                                mHandlerL.captureStill();
-//
-//                            }
-//                        }
-//                    }*/
-//                    Toast.makeText(Cameras.this, "take two photo", Toast.LENGTH_SHORT).show();
-//
-//                    break;
+                    */
             }
         }
     };
@@ -334,7 +298,7 @@ public final class Cameras extends HiddenCameraActivity implements CameraDialog.
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        mCaptureButtonR.setVisibility(View.VISIBLE);
+                        mCaptureButtonR.setVisibility(View.INVISIBLE);
                         Log.e(TAG, " mCaptureButtonR");
                     }
                 });
@@ -446,7 +410,6 @@ public final class Cameras extends HiddenCameraActivity implements CameraDialog.
         options.inPreferredConfig = Bitmap.Config.RGB_565;
         Bitmap bitmap = BitmapFactory.decodeFile(imageFile.getAbsolutePath(), options);
 
-        //The captured photo is upload to the AWS S3.
         //beginUpload(imageFile.getPath());
         //Display the image to the image view
         //((ImageView) findViewById(R.id.cam_prev)).setImageBitmap(bitmap);
