@@ -17,4 +17,9 @@ Ethernet ile adb bağlantısı kurma
 $adb tcpip 5555
 $adb connect <ip_address_of_stb>
 
+//IFrameCallback
+AbstractUVCCameraHandler.java -> line 646
+
+//setFrameCallback
+UVCCamera.java -Z 385
 

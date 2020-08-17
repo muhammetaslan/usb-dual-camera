@@ -277,6 +277,7 @@ public String path;
 		if (thread == null) return;
 		switch (msg.what) {
 		case MSG_OPEN:
+			Log.e(TAG, "switch msg open start ");
 			thread.handleOpen((USBMonitor.UsbControlBlock)msg.obj);
 			break;
 		case MSG_CLOSE:
@@ -637,7 +638,11 @@ public String path;
 				callOnStopRecording();
 			}
 		}
-
+		/**
+		 *
+		 * IFrameCallback
+		 *
+		 * */
 		private final IFrameCallback mIFrameCallback = new IFrameCallback() {
 			@Override
 			public void onFrame(final ByteBuffer frame) {
