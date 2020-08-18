@@ -7,6 +7,7 @@ import java.text.SimpleDateFormat;
 import java.util.GregorianCalendar;
 import java.util.Locale;
 
+import android.content.Context;
 import android.media.MediaCodec;
 import android.media.MediaFormat;
 import android.media.MediaMuxer;
@@ -26,7 +27,7 @@ public class MediaMuxerWrapper {
 	private int mEncoderCount, mStatredCount;
 	private boolean mIsStarted;
 	private MediaEncoder mVideoEncoder, mAudioEncoder;
-
+	private Context mContext;
 	/**
 	 * Constructor
 	 * @param ext extension of output file
@@ -34,11 +35,18 @@ public class MediaMuxerWrapper {
 	 */
 	public MediaMuxerWrapper(String ext) throws IOException {
 		if (TextUtils.isEmpty(ext)) ext = ".mp4";
+
 		try {
 			mOutputPath = getCaptureFile(Environment.DIRECTORY_MOVIES, ext).toString();
 		} catch (final NullPointerException e) {
 			throw new RuntimeException("This app has no permission of writing external storage");
 		}
+		/*
+		String file_path= mContext.getFilesDir().getPath();
+
+		File file= new File(file_path);
+		Log.e(TAG," : " + file);
+		*/
 		mMediaMuxer = new MediaMuxer(mOutputPath, MediaMuxer.OutputFormat.MUXER_OUTPUT_MPEG_4);
 		mEncoderCount = mStatredCount = 0;
 		mIsStarted = false;
@@ -177,6 +185,23 @@ public class MediaMuxerWrapper {
         }
     	return null;
     }
+
+
+	/**
+	 * generate output file
+	 * @param type Environment.DIRECTORY_MOVIES / Environment.DIRECTORY_DCIM etc.
+	 * @param ext .mp4(.m4a for audio) or .png
+	 * @return return null when this app has no writing permission to external storage.
+	 */
+	public static final File getCaptureFileInternal(final String type, final String ext) {
+		final File dir = new File(Environment.getExternalStoragePublicDirectory(type), DIR_NAME);
+		Log.d(TAG, "path=" + dir.toString());
+		dir.mkdirs();
+		if (dir.canWrite()) {
+			return new File(dir, getDateTimeString() + ext);
+		}
+		return null;
+	}
 
     /**
      * get current date and time as String

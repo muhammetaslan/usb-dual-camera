@@ -146,6 +146,7 @@ public String path;
 		sendMessage(obtainMessage(MSG_PREVIEW_START, surface));
 	}
 
+
 	public void stopPreview() {
 		if (DEBUG) Log.v(TAG, "stopPreview:");
 		removeMessages(MSG_PREVIEW_START);
@@ -300,7 +301,8 @@ public String path;
 			}
 			break;
 		case MSG_CAPTURE_START:
-			thread.handleStartRecording();
+			//thread.handleStartRecording();
+			thread.getFrames();
 			Log.e(TAG, "switch msg capture start ");
 			break;
 		case MSG_CAPTURE_STOP:
@@ -345,6 +347,8 @@ public String path;
 		private MediaMuxerWrapper mMuxer;
 		private MediaVideoBufferEncoder mVideoEncoder;
 
+
+
 		/**
 		 *
 		 * @param clazz Class extends AbstractUVCCameraHandler
@@ -371,6 +375,21 @@ public String path;
 			mWeakParent = new WeakReference<Activity>(parent);
 			mWeakCameraView = new WeakReference<CameraViewInterface>(cameraView);
 			loadShutterSound(parent);
+		}
+
+		public String internalStorage(){
+			final Activity parent = mWeakParent.get();
+			ContextWrapper cw = new ContextWrapper(parent.getApplicationContext());
+
+			// path to /data/data/yourapp/app_data/imageDir
+			File directory = cw.getDir("viDir", Context.MODE_PRIVATE);
+			// Create imageDir
+			Long tsLong = System.currentTimeMillis();
+			String timeStamp = tsLong.toString();
+
+			File mypath=new File(directory, timeStamp+".mp4");
+
+			return mypath.toString();
 		}
 
 		@Override
@@ -512,7 +531,7 @@ public String path;
 					saveToInternalStorage(bitmap);
 				}
 			}).start();
-			Thread.sleep(1000);
+			//Thread.sleep(1000);
 			/*
 			try {
 				final Bitmap bitmap = mWeakCameraView.get().captureStillImage();
@@ -575,6 +594,30 @@ public String path;
 				}
 			}
 			return directory.getAbsolutePath();
+		}
+
+		private String saveToInternalStorageVideo(){
+			final Activity parent = mWeakParent.get();
+			ContextWrapper cw = new ContextWrapper(parent.getApplicationContext());
+
+			// path to /data/data/yourapp/app_data/imageDir
+			File directory = cw.getDir("videoDir", Context.MODE_PRIVATE);
+			// Create imageDir
+			Long tsLong = System.currentTimeMillis();
+			String timeStamp = tsLong.toString();
+
+			File mypath=new File(directory, timeStamp+".mp4");
+			Log.e(TAG_THREAD, "mypath : " + mypath);
+			return mypath.getAbsolutePath();
+		}
+
+
+
+		public void getFrames(){
+			if (DEBUG) Log.e(TAG_THREAD, "get farmes");
+			if ((mUVCCamera == null)) return;
+			if (DEBUG) Log.e(TAG_THREAD, "get farmes skip");
+			mUVCCamera.setFrameCallback(mIFrameCallback, UVCCamera.PIXEL_FORMAT_NV21);
 		}
 
 		public void handleStartRecording() {
@@ -646,14 +689,15 @@ public String path;
 		private final IFrameCallback mIFrameCallback = new IFrameCallback() {
 			@Override
 			public void onFrame(final ByteBuffer frame) {
-				final MediaVideoBufferEncoder videoEncoder;
+
 				synchronized (mSync) {
-					videoEncoder = mVideoEncoder;
+					Log.e(TAG_THREAD, "get farmes encoder");
+					Bitmap bitmap = Bitmap.createBitmap(UVCCamera.DEFAULT_PREVIEW_WIDTH, UVCCamera.DEFAULT_PREVIEW_HEIGHT, Bitmap.Config.ARGB_8888);
+					bitmap.copyPixelsFromBuffer(frame);
+					Log.e(TAG_THREAD, "get farmes encoder last");
 				}
-				if (videoEncoder != null) {
-					videoEncoder.frameAvailableSoon();
-					videoEncoder.encode(frame);
-				}
+				Log.e(TAG_THREAD, "get farmes encoder before if");
+
 			}
 		};
 
