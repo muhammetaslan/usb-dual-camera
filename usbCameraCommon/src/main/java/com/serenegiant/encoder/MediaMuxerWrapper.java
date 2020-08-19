@@ -41,12 +41,6 @@ public class MediaMuxerWrapper {
 		} catch (final NullPointerException e) {
 			throw new RuntimeException("This app has no permission of writing external storage");
 		}
-		/*
-		String file_path= mContext.getFilesDir().getPath();
-
-		File file= new File(file_path);
-		Log.e(TAG," : " + file);
-		*/
 		mMediaMuxer = new MediaMuxer(mOutputPath, MediaMuxer.OutputFormat.MUXER_OUTPUT_MPEG_4);
 		mEncoderCount = mStatredCount = 0;
 		mIsStarted = false;

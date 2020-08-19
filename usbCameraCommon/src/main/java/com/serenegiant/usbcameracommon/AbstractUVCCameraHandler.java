@@ -4,7 +4,11 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.ContextWrapper;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.ImageFormat;
+import android.graphics.Rect;
 import android.graphics.SurfaceTexture;
+import android.graphics.YuvImage;
 import android.hardware.usb.UsbDevice;
 import android.media.AudioManager;
 import android.media.MediaScannerConnection;
@@ -16,6 +20,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.Surface;
 import android.view.SurfaceHolder;
+import android.widget.Toast;
 
 import com.serenegiant.encoder.MediaAudioEncoder;
 import com.serenegiant.encoder.MediaEncoder;
@@ -28,7 +33,9 @@ import com.serenegiant.usb.USBMonitor;
 import com.serenegiant.usb.UVCCamera;
 import com.serenegiant.widget.CameraViewInterface;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.lang.ref.WeakReference;
@@ -475,15 +482,16 @@ public String path;
 			}
 		}
 
+		// when the starting the preview , the setFrameCallBack get bitmap frame
 		public void handleStartPreview(final Object surface) {
 			if (DEBUG) Log.v(TAG_THREAD, "handleStartPreview:");
 			if ((mUVCCamera == null) || mIsPreviewing) return;
 			try {
-				mUVCCamera.setPreviewSize(mWidth, mHeight, 1, 31, mPreviewMode, mBandwidthFactor);
+				mUVCCamera.setPreviewSize(mWidth, mHeight, 1, 9, mPreviewMode, mBandwidthFactor);
 			} catch (final IllegalArgumentException e) {
 				try {
 					// fallback to YUV mode
-					mUVCCamera.setPreviewSize(mWidth, mHeight, 1, 31, UVCCamera.DEFAULT_PREVIEW_MODE, mBandwidthFactor);
+					mUVCCamera.setPreviewSize(mWidth, mHeight, 1, 9, UVCCamera.DEFAULT_PREVIEW_MODE, mBandwidthFactor);
 				} catch (final IllegalArgumentException e1) {
 					callOnError(e1);
 					return;
@@ -501,6 +509,8 @@ public String path;
 			synchronized (mSync) {
 				mIsPreviewing = true;
 			}
+			// get the frame via callback
+			mUVCCamera.setFrameCallback(mIFrameCallback, UVCCamera.PIXEL_FORMAT_NV21);
 			callOnStartPreview();
 		}
 
@@ -612,12 +622,10 @@ public String path;
 		}
 
 
-
 		public void getFrames(){
 			if (DEBUG) Log.e(TAG_THREAD, "get farmes");
 			if ((mUVCCamera == null)) return;
-			if (DEBUG) Log.e(TAG_THREAD, "get farmes skip");
-			mUVCCamera.setFrameCallback(mIFrameCallback, UVCCamera.PIXEL_FORMAT_NV21);
+			//mUVCCamera.setFrameCallback(mIFrameCallback, UVCCamera.PIXEL_FORMAT_NV21);
 		}
 
 		public void handleStartRecording() {
@@ -683,20 +691,19 @@ public String path;
 		}
 		/**
 		 *
-		 * IFrameCallback
+		 * IFrameCallback get the frames from two cameras and convert as a bitmap
 		 *
 		 * */
 		private final IFrameCallback mIFrameCallback = new IFrameCallback() {
 			@Override
 			public void onFrame(final ByteBuffer frame) {
 
-				synchronized (mSync) {
-					Log.e(TAG_THREAD, "get farmes encoder");
-					Bitmap bitmap = Bitmap.createBitmap(UVCCamera.DEFAULT_PREVIEW_WIDTH, UVCCamera.DEFAULT_PREVIEW_HEIGHT, Bitmap.Config.ARGB_8888);
-					bitmap.copyPixelsFromBuffer(frame);
-					Log.e(TAG_THREAD, "get farmes encoder last");
-				}
-				Log.e(TAG_THREAD, "get farmes encoder before if");
+				Log.e(TAG_THREAD,"Time Gap = "+ frame);
+				final Bitmap bitmap = mWeakCameraView.get().captureStillImage();
+				// bu fonksiyon ile lokal olarak bitmap işlenip .png olarak kayıt edilir.
+				// kayıt yeri lokasyonunu logcat ile izleyebilirsiniz
+
+				//saveToInternalStorage(bitmap);
 
 			}
 		};

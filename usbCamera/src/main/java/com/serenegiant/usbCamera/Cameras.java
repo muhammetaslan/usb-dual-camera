@@ -8,8 +8,6 @@ import android.graphics.BitmapFactory;
 import android.graphics.SurfaceTexture;
 import android.hardware.usb.UsbDevice;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.HandlerThread;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.util.Log;
@@ -69,9 +67,6 @@ public final class Cameras extends HiddenCameraActivity implements CameraDialog.
     private CameraViewInterface mUVCCameraViewL;
     private ImageButton mCaptureButtonL;
     private Surface mLeftPreviewSurface;
-
-
-    //Thread threadL, threadDevice, threadR;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -133,34 +128,6 @@ public final class Cameras extends HiddenCameraActivity implements CameraDialog.
                     UVCCamera.DEFAULT_PREVIEW_WIDTH, UVCCamera.DEFAULT_PREVIEW_HEIGHT, UVCCamera.FRAME_FORMAT_MJPEG, BANDWIDTH_FACTORS[0]);
 
         }
-/*
-         threadL = new Thread(new Runnable()  {
-
-            @Override
-            public void run() {
-
-                mHandlerL.captureStill();
-            }
-        });
-
-         threadR = new Thread(new Runnable()  {
-
-            @Override
-            public void run() {
-
-                mHandlerR.captureStill();
-
-            }
-        });
-         threadDevice = new Thread(new Runnable()  {
-
-            @Override
-            public void run() {
-                Log.e("takePictureCameras:" , "Cameras");
-                takePicture();
-            }
-        });
-*/
     }
 
     @Override
@@ -231,15 +198,9 @@ public final class Cameras extends HiddenCameraActivity implements CameraDialog.
                         if (mHandlerL.isOpened()) {
                             //TODO when app open getRequest will run
                             if (checkPermissionWriteExternalStorage()) {
-                                /*
-                                for (int i =0;i<=2;i++) {
-                                    mHandlerL.captureStill();
-                                    mHandlerR.captureStill();
-                                }
-                                */
-                                mHandlerL.startRecording();
-                                mHandlerR.startRecording();
 
+                                mHandlerL.captureStill();
+                                mHandlerR.captureStill();
                             }
                             Toast.makeText(Cameras.this, "Oldu L", Toast.LENGTH_SHORT).show();
                         }
