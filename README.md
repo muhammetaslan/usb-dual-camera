@@ -1,12 +1,15 @@
-#1 How to share Internet (WiFi) over Ethernet using LAN cable (without Router)
+# Note
+This app. can get the video stream simultaneously two external usb cameras.
+
+# 1 How to share Internet (WiFi) over Ethernet using LAN cable (without Router)
 https://www.youtube.com/watch?v=4ka-MAbalxY
 
-Ethernet ile adb bağlantısı kurma 
+# Connection via ethernet debubing (this generally useful for android stb) 
 $adb tcpip 5555
 $adb connect <ip_address_of_stb>
 
 
-#2 usb-dual-camera
+# 2 usb-dual-camera
 dual usb camera android app for STB
 
 // start the capture frame 
